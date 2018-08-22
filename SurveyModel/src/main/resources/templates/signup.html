@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Sign up</title>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+
+<script>
+$(document).ready(function(){
+	$('#emailverify').on("click",function() {
+			// /email_verify/{email}
+			console.log($("#email").val());
+		 $.get("http://localhost:8080/email_verify/" + $("#email").val(),
+				   
+				    function(data, status){
+				        alert("Data: " + data + "\nStatus: " + status);
+				    });
+	}); 
+});
+</script>
+</head>
+<body>
+
+	<h1>Please sign up</h1>
+	<form th:action="@{/account}" th:object="${account}" method="POST">
+		
+		Email:<br>
+		<input id="email" type="email" th:field="*{email}" /><br>
+		Password:<br>
+		<input type="password" th:field="*{password}" /><br>
+		<input type="text" th:field="*{code}" />
+		<input id="emailverify" type="button" value="Send Code" />
+		<input type="submit" value="Submit" />
+	</form>
+	
+</body>
+</html>

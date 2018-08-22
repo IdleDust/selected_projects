@@ -1,0 +1,8 @@
+wtforms
+sanic
+aiohttp
+miniupnpc
+sqlalchemy
+flask
+requests
+Sanic-WTF
